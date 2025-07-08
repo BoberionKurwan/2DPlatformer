@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class FruitSpawner : MonoBehaviour
 {
     [SerializeField] private Fruit _fruitPrefab;
-    [SerializeField] private float _spawnRadius = 5f;
     [SerializeField] private float _spawnInterval = 1f;
     [SerializeField] private int _poolCapacity = 3;
     [SerializeField] private int _poolMaxSize = 3;
@@ -96,7 +95,7 @@ public class FruitSpawner : MonoBehaviour
     {
         _pool.Release(fruit);
     }
-    
+
     private Vector2 GetRandomSpawnPosition()
     {
         return _points[UnityEngine.Random.Range(0, _points.Count)].transform.position;
