@@ -1,25 +1,33 @@
-using UnityEngine;
 using System;
+using Unity.VisualScripting;
+using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 public class Fruit : MonoBehaviour
 {
-    [SerializeField] private Collider2D _collider;
     public event Action<Fruit> ReturnToPool;
 
-    private void Start()
-    {
-        if (_collider == null)
-            _collider = GetComponent<Collider2D>();
-
-        _collider.isTrigger = true;
-    }
+    private SpawnPoint _spawnPoint;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent<Mover>(out _))
+        if (other.TryGetComponent<Player>(out _))
         {
             ReturnToPool.Invoke(this);
         }
+    }
+
+    public void SetSpawnPoint(SpawnPoint spawnPoint)
+    {
+        _spawnPoint = spawnPoint;
+    }
+
+    public SpawnPoint GetSpawnPoint()
+    {
+        return _spawnPoint;
+    }
+
+    public void ReleaseSpawnPoint()
+    {
+        _spawnPoint = null;
     }
 }
