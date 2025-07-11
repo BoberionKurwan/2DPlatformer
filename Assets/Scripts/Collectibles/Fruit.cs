@@ -17,7 +17,7 @@ public class Fruit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent<PlayerMover>(out _))
+        if (other.gameObject.TryGetComponent<Mover>(out _))
         {
             ReturnToPool.Invoke(this);
         }

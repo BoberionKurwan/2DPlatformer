@@ -1,0 +1,24 @@
+using UnityEngine;
+
+public class Mover : MonoBehaviour
+{
+    [SerializeField] private float _speedX = 100;
+    [SerializeField] private float _jumpForce = 3;
+    private Rigidbody2D _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    public void Jump()
+    {
+        _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, 0);
+        _rigidbody.AddForce(new Vector2(0, _jumpForce));
+    }
+
+    public void Move(float direction)
+    {
+        _rigidbody.linearVelocity = new Vector2(_speedX * direction * Time.fixedDeltaTime, _rigidbody.linearVelocity.y);
+    }
+}
