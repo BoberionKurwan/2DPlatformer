@@ -4,6 +4,7 @@ using UnityEngine;
 public class Animation : MonoBehaviour
 {
     private const string JumpTrigger = "Jump";
+    private const string DeathTrigger = "Death";
     private const string Grounded = "IsGrounded";
     private const string Speed = "Speed";
 
@@ -22,4 +23,7 @@ public class Animation : MonoBehaviour
 
     public void SetAnimatorBool(bool isGrounded) => 
         _animator.SetBool(Grounded,isGrounded);
+
+    public void SetAnimatorDeathTrigger() =>
+        _animator.SetTrigger(DeathTrigger);
 }

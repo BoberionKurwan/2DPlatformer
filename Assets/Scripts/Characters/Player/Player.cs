@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundDetector), typeof(InputReader), typeof(Mover))]
-[RequireComponent(typeof(Flipper), typeof(Animation))]
+[RequireComponent(typeof(Flipper), typeof(Animation), typeof(Health))]
 public class Player : MonoBehaviour
 {
     private GroundDetector _groundDetector;
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     private Mover _mover;
     private Flipper _flipper;
     private Animation _animation;
+    private Health _health;
 
     private void Awake()
     {
@@ -17,6 +19,17 @@ public class Player : MonoBehaviour
         _mover = GetComponent<Mover>();
         _flipper = GetComponent<Flipper>();
         _animation = GetComponent<Animation>();
+        _health = GetComponent<Health>();
+    }
+
+    private void Start()
+    {
+        _health.PlayerDied += OnPlayerDied;
+    }
+
+    private void OnDestroy()
+    {
+        _health.PlayerDied -= OnPlayerDied;
     }
 
     private void FixedUpdate()
@@ -33,5 +46,17 @@ public class Player : MonoBehaviour
         _animation.SetAnimatorSpeed(_inputReader.Direction);
         _animation.SetAnimatorBool(_groundDetector.IsGround);
         _flipper.Flip(_inputReader.GetMoveInput());
+    }
+
+    private void OnPlayerDied()
+    {
+        _animation.SetAnimatorDeathTrigger();
+        StartCoroutine(DestroyAfterAnimation());
+    }
+
+    private IEnumerator DestroyAfterAnimation()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Destroy(gameObject);
     }
 }
