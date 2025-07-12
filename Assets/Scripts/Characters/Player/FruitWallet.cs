@@ -8,7 +8,7 @@ public class FruitWallet : MonoBehaviour
     private Health _health;
  
     private int _fruitCount = 0;
-    private int healthRestoreAmount = 1;
+    private int _healthRestoreAmount = 1;
 
     public event Action<int> FruitCountChanged;
 
@@ -20,19 +20,19 @@ public class FruitWallet : MonoBehaviour
 
     private void Start()
     {
-        _collectibleSearcher.foundFruit += IncreaseFruitCount;
+        _collectibleSearcher.FoundFruit += IncreaseFruitCount;
 
     }
 
     private void OnDestroy()
     {
-        _collectibleSearcher.foundFruit -= IncreaseFruitCount;
+        _collectibleSearcher.FoundFruit -= IncreaseFruitCount;
     }
 
     private void IncreaseFruitCount()
     {
         _fruitCount++;
-        _health.RestoreHealth(healthRestoreAmount);
+        _health.RestoreHealth(_healthRestoreAmount);
         FruitCountChanged?.Invoke(_fruitCount);
     }
 

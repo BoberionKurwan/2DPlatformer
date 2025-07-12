@@ -9,17 +9,18 @@ public class Damager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        TryDamagePlayer(collision.collider);
+        Attack(collision.collider);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        TryDamagePlayer(collision.collider);
+        Attack(collision.collider);
     }
 
-    private void TryDamagePlayer(Collider2D collider)
+    private void Attack(Collider2D collider)
     {
-        if (Time.time - _lastDamageTime < _damageCooldown) return;
+        if (Time.time - _lastDamageTime < _damageCooldown) 
+            return;
 
         if (collider.TryGetComponent<Health>(out  var health))
         {

@@ -36,7 +36,6 @@ public class Enemy : MonoBehaviour
         {
             _chaser.Chase(_playerSearcher.Target.transform.position);
             _flipper.FlipTowardsTarget(_playerSearcher.Target.transform.position);
-            Debug.Log(_playerSearcher.Target.transform.position.ToString());
         }
     }
 }
