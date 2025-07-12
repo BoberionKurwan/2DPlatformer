@@ -1,17 +1,24 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
+[RequireComponent(typeof(CollectibleSearcher))]
 public class FruitWallet : MonoBehaviour
 {
-    CollectibleSearcher _collectibleSearcher;
+    private CollectibleSearcher _collectibleSearcher;
     private int _fruitCount = 0;
 
     public event Action<int> FruitCountChanged;
 
-    private void Start()
+    private void Awake()
     {
         _collectibleSearcher = GetComponent<CollectibleSearcher>();
         _collectibleSearcher.foundFruit += IncreaseFruitCount;
+    }
+
+    private void OnDestroy()
+    {
+        _collectibleSearcher.foundFruit -= IncreaseFruitCount;
     }
 
     private void IncreaseFruitCount()
@@ -20,8 +27,5 @@ public class FruitWallet : MonoBehaviour
         FruitCountChanged?.Invoke(_fruitCount);
     }
 
-    public int GetCurrentCount()
-    {
-        return _fruitCount;
-    }
+    public int GetCurrentCount() => _fruitCount;
 }

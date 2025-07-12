@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(PatrolPoint))]
 public class Patroler : MonoBehaviour
 {
     [SerializeField] private float _speed = 3f;

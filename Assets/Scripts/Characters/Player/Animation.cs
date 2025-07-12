@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Animation : MonoBehaviour
 {
     private const string JumpTrigger = "Jump";
@@ -8,14 +9,17 @@ public class Animation : MonoBehaviour
 
     private Animator _animator;
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
-    public void SetAnimatorSpeed(float moveInput) => _animator.SetFloat(Speed, Mathf.Abs(moveInput));
+    public void SetAnimatorSpeed(float moveInput) => 
+        _animator.SetFloat(Speed, Mathf.Abs(moveInput));
 
-    public void SetAnimatorJumpTrigger() => _animator.SetTrigger(JumpTrigger);
+    public void SetAnimatorJumpTrigger() => 
+        _animator.SetTrigger(JumpTrigger);
 
-    public void SetAnimatorBool(bool isGrounded) => _animator.SetBool(Grounded,isGrounded);
+    public void SetAnimatorBool(bool isGrounded) => 
+        _animator.SetBool(Grounded,isGrounded);
 }

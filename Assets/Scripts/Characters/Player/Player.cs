@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent(typeof(GroundDetector), typeof(InputReader), typeof(Mover))]
+[RequireComponent(typeof(Flipper), typeof(Animation))]
 public class Player : MonoBehaviour
 {
     private GroundDetector _groundDetector;

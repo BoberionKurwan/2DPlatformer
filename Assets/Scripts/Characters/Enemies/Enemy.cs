@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Patroler), typeof(Flipper))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private List<PatrolPoint> _patrolPoints;

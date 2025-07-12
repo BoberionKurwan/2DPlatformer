@@ -10,6 +10,7 @@ public class CollectibleSearcher : MonoBehaviour
         if (other.TryGetComponent<Fruit>(out Fruit fruit))
         {
             foundFruit.Invoke();
+            fruit.FruitCollected();
         }
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour
@@ -8,12 +7,9 @@ public class Fruit : MonoBehaviour
 
     private SpawnPoint _spawnPoint;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void FruitCollected()
     {
-        if (other.TryGetComponent<Player>(out _))
-        {
-            ReturnToPool.Invoke(this);
-        }
+        ReturnToPool.Invoke(this);
     }
 
     public void SetSpawnPoint(SpawnPoint spawnPoint)
