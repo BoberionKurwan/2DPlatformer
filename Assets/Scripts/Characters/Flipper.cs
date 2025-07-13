@@ -15,9 +15,7 @@ public class Flipper : MonoBehaviour
 
     public void FlipTowardsTarget(Vector2 targetPosition)
     {
-        if (targetPosition.x < transform.position.x)
-            transform.rotation = Quaternion.Euler(0, LeftRotation, 0);
-        else
-            transform.rotation = Quaternion.Euler(0, RightRotation, 0);
+        float direction = targetPosition.x - transform.position.x;
+        Flip(direction);
     }
 }
