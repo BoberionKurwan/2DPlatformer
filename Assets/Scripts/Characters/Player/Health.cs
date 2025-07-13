@@ -3,34 +3,35 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int _maxHealth = 3;
-    private int _initialHealth = 3;
+    private int _max = 3;
+    private int _initial = 3;
 
-    public int CurrentHealth { get; private set; }
+    public int Current { get; private set; }
 
-    public event Action PlayerDied;
+    public event Action Died;
 
     private void Awake()
     {
-        CurrentHealth = _initialHealth;
+        Current = _initial;
     }
 
     public void TakeDamage(int damage)
     {
-        CurrentHealth -= damage;
+        Current -= damage;
 
-        if (CurrentHealth < 0)
+        if (Current < 0)
         {
-            CurrentHealth = 0;
-            PlayerDied?.Invoke();
+            Current = 0;
+            Died?.Invoke();
         }
     }
 
-    public void RestoreHealth(int healthAmount)
+    public void Restore(int healthAmount)
     {
-        CurrentHealth += healthAmount;
+        if (healthAmount >= 0)
+            Current += healthAmount;
 
-        if (CurrentHealth > _maxHealth)
-            CurrentHealth = _maxHealth;
+        if (Current > _max)
+            Current = _max;
     }
 }

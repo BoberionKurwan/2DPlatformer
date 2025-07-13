@@ -24,12 +24,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _health.PlayerDied += OnPlayerDied;
+        _health.Died += OnPlayerDied;
     }
 
     private void OnDestroy()
     {
-        _health.PlayerDied -= OnPlayerDied;
+        _health.Died -= OnPlayerDied;
     }
 
     private void FixedUpdate()

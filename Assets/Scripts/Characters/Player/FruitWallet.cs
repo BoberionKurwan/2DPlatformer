@@ -7,13 +7,17 @@ public class FruitWallet : MonoBehaviour
     private CollectibleSearcher _collectibleSearcher;
     private Health _health;
  
-    private int _fruitCount = 0;
     private int _healthRestoreAmount = 1;
+    private int _initialCount = 0;
 
     public event Action<int> FruitCountChanged;
 
+    public int FruitCount {  get; private set; }
+
     private void Awake()
     {
+        FruitCount = _initialCount;
+
         _collectibleSearcher = GetComponent<CollectibleSearcher>();
         _health = GetComponent<Health>();
     }
@@ -31,10 +35,10 @@ public class FruitWallet : MonoBehaviour
 
     private void IncreaseFruitCount()
     {
-        _fruitCount++;
-        _health.RestoreHealth(_healthRestoreAmount);
-        FruitCountChanged?.Invoke(_fruitCount);
+        FruitCount++;
+        _health.Restore(_healthRestoreAmount);
+        FruitCountChanged?.Invoke(FruitCount);
     }
 
-    public int GetCurrentCount() => _fruitCount;
+    public int GetCurrentCount() => FruitCount;
 }

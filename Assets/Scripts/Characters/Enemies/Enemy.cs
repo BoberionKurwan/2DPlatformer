@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
         _flipper = GetComponent<Flipper>();
         _playerSearcher = GetComponent<PlayerSearcher>();
         _chaser = GetComponent<Chaser>();
-    }
+     }
 
     private void Start()
     {

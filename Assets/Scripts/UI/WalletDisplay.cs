@@ -9,7 +9,7 @@ public class WalletDisplay : MonoBehaviour
     private void Awake()
     {
         _wallet.FruitCountChanged += UpdateDisplayCount;
-        UpdateDisplayCount(_wallet.GetCurrentCount());
+        UpdateDisplayCount(_wallet.FruitCount);
     }
 
     private void OnDestroy()
