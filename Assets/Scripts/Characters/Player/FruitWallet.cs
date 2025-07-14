@@ -39,6 +39,4 @@ public class FruitWallet : MonoBehaviour
         _health.Restore(_healthRestoreAmount);
         FruitCountChanged?.Invoke(FruitCount);
     }
-
-    public int GetCurrentCount() => FruitCount;
 }

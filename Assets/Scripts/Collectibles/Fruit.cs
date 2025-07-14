@@ -9,7 +9,7 @@ public class Fruit : MonoBehaviour
 
     public void FruitCollected()
     {
-        ReturnToPool.Invoke(this);
+        ReturnToPool?.Invoke(this);
     }
 
     public void SetSpawnPoint(SpawnPoint spawnPoint)

@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
         _animation.SetAnimatorSpeed(_inputReader.Direction);
         _animation.SetAnimatorBool(_groundDetector.IsGround);
-        _flipper.Flip(_inputReader.GetMoveInput());
+        _flipper.Flip(_inputReader.Direction);
     }
 
     private void OnPlayerDied()

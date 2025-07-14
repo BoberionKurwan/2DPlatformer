@@ -17,11 +17,6 @@ public class InputReader : MonoBehaviour
 
     public bool GetIsJump() => GetBoolAsTrigger(ref _isJump);
 
-    public float GetMoveInput()
-    {
-        return Input.GetAxisRaw(Horizontal);
-    }
-
     private bool GetBoolAsTrigger(ref bool value)
     {
         bool localValue = value;
