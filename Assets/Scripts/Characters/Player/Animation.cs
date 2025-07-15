@@ -3,10 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Animation : MonoBehaviour
 {
-    private const string JumpTrigger = "Jump";
-    private const string DeathTrigger = "Death";
-    private const string Grounded = "IsGrounded";
-    private const string Speed = "Speed";
+    private static readonly int JumpTrigger = Animator.StringToHash("Jump");
+    private static readonly int DeathTrigger = Animator.StringToHash("Death");
+    private static readonly int Grounded = Animator.StringToHash("IsGrounded");
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     private Animator _animator;
 
