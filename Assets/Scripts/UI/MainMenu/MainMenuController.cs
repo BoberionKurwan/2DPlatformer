@@ -9,8 +9,8 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button _exit;
     [SerializeField] private Button _authorExit;
 
-    [SerializeField] private GameObject menuBackground;
-    [SerializeField] private GameObject authorsPanel;
+    [SerializeField] private GameObject _menuBackground;
+    [SerializeField] private GameObject _authorsPanel;
     [SerializeField] private string gameSceneName = "Game";
 
     private void OnEnable()
@@ -23,8 +23,8 @@ public class MainMenuController : MonoBehaviour
 
     public void ShowAboutAuthors()
     {
-        menuBackground.SetActive(false);
-        authorsPanel.SetActive(true);
+        _menuBackground.SetActive(false);
+        _authorsPanel.SetActive(true);
     }
 
     public void ExitGame()
@@ -38,8 +38,8 @@ public class MainMenuController : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        authorsPanel.SetActive(false);
-        menuBackground.SetActive(true);
+        _authorsPanel.SetActive(false);
+        _menuBackground.SetActive(true);
     }
 
     private void LoadGameScene()
