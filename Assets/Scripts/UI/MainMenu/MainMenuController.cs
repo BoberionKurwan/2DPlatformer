@@ -1,29 +1,36 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    [SerializeField] private Button _play;
+    [SerializeField] private Button _showAuthors;
+    [SerializeField] private Button _exit;
+    [SerializeField] private Button _authorExit;
+
     [SerializeField] private GameObject menuBackground;
     [SerializeField] private GameObject authorsPanel;
     [SerializeField] private string gameSceneName = "Game";
 
-    private bool isAuthorsPanelActive = false;
-
-    public void PlayGame()
+    private void OnEnable()
     {
-        Invoke(nameof(LoadGameScene), 1f);
+        _play.onClick.AddListener(LoadGameScene);
+        _showAuthors.onClick.AddListener(ShowAboutAuthors);
+        _exit.onClick.AddListener(ExitGame);
+        _authorExit.onClick.AddListener(ReturnToMainMenu);
     }
 
-    public void ShowAbout()
+    public void ShowAboutAuthors()
     {
         menuBackground.SetActive(false);
         authorsPanel.SetActive(true);
-        isAuthorsPanelActive = true;
     }
 
     public void ExitGame()
     {
         Application.Quit();
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
@@ -33,7 +40,6 @@ public class MainMenuController : MonoBehaviour
     {
         authorsPanel.SetActive(false);
         menuBackground.SetActive(true);
-        isAuthorsPanelActive = false;
     }
 
     private void LoadGameScene()
