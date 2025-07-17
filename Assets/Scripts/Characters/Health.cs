@@ -3,16 +3,19 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int _max = 3;
-    private int _initial = 3;
+    private int _initial = 100;
+    private int _max = 100;
 
     public int Current { get; private set; }
+    public int Max { get; private set; }
 
     public event Action Died;
+    public event Action Changed;
 
     private void Awake()
     {
         Current = _initial;
+        Max = _max;
     }
 
     public void TakeDamage(int damage)
@@ -24,6 +27,8 @@ public class Health : MonoBehaviour
             Current = 0;
             Died?.Invoke();
         }
+
+        Changed?.Invoke();
     }
 
     public void Restore(int healthAmount)
@@ -33,5 +38,7 @@ public class Health : MonoBehaviour
 
         if (Current > _max)
             Current = _max;
+
+        Changed?.Invoke();
     }
 }

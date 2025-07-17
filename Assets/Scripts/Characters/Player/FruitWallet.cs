@@ -7,7 +7,7 @@ public class FruitWallet : MonoBehaviour
     private CollectibleSearcher _collectibleSearcher;
     private Health _health;
  
-    private int _healthRestoreAmount = 1;
+    private int _healthRestoreAmount = 25;
     private int _initialCount = 0;
 
     public event Action<int> FruitCountChanged;

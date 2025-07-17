@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
-    private int _damage = 1;
+    [SerializeField] private int _damage = 25;
+
     private float _damageCooldown = 1f;
 
     private float _lastDamageTime;

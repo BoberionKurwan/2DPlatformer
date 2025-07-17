@@ -2,14 +2,16 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundDetector), typeof(InputReader), typeof(Mover))]
-[RequireComponent(typeof(Flipper), typeof(Animation), typeof(Health))]
+[RequireComponent(typeof(Flipper), typeof(Health))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private SliderHandler _slideHandler;
+    [SerializeField] private Animation _animation;
+
     private GroundDetector _groundDetector;
     private InputReader _inputReader;
     private Mover _mover;
     private Flipper _flipper;
-    private Animation _animation;
     private Health _health;
 
     private void Awake()
@@ -18,7 +20,6 @@ public class Player : MonoBehaviour
         _inputReader = GetComponent<InputReader>();
         _mover = GetComponent<Mover>();
         _flipper = GetComponent<Flipper>();
-        _animation = GetComponent<Animation>();
         _health = GetComponent<Health>();
     }
 
