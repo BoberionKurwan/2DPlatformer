@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Flipper), typeof(Health))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private HealthDrainer _healthDrainer;
     [SerializeField] private SliderHandler _slideHandler;
     [SerializeField] private Animation _animation;
 
@@ -13,7 +14,7 @@ public class Player : MonoBehaviour
     private Mover _mover;
     private Flipper _flipper;
     private Health _health;
-
+    
     private void Awake()
     {
         _groundDetector = GetComponent<GroundDetector>();
@@ -42,6 +43,11 @@ public class Player : MonoBehaviour
         {
             _mover.Jump();
             _animation.SetAnimatorJumpTrigger();
+        }
+
+        if (_inputReader.GetIsAbilityActive())
+        {
+            _healthDrainer.Drain();
         }
 
         _animation.SetAnimatorSpeed(_inputReader.Direction);

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2233623434405713346}
   - component: {fileID: 8026109949322602755}
   - component: {fileID: 7846861103600713026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cherries
   m_TagString: Untagged
   m_Icon: {fileID: 0}

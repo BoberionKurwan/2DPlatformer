@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Patroler), typeof(Flipper), typeof(PlayerSearcher))]
+[RequireComponent(typeof(Patroler), typeof(Flipper))]
 [RequireComponent(typeof(Chaser), typeof(Damager), typeof(Health))]
 public class Enemy : MonoBehaviour
 {
     private static readonly int DeathTrigger = Animator.StringToHash("Death");
 
+    [SerializeField] private PlayerSearcher _playerSearcher;
     [SerializeField] private List<PatrolPoint> _patrolPoints;
     [SerializeField] private Animation _animation;
 
     private Patroler _enemyPatroler;
     private Flipper _flipper;
-    private PlayerSearcher _playerSearcher;
     private Chaser _chaser;
     private Health _health;
 
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     {
         _enemyPatroler = GetComponent<Patroler>();
         _flipper = GetComponent<Flipper>();
-        _playerSearcher = GetComponent<PlayerSearcher>();
         _chaser = GetComponent<Chaser>();
         _health = GetComponent<Health>();
      }
